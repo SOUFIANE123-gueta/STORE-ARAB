@@ -642,10 +642,11 @@ function submitOrder(e) {
     method: "POST",
     body: formData
   })
-  .then(() => {
-   var modal = document.getElementById("successModal");
-modal.style.display = "flex";
-modal.classList.add("show");
+.then(() => {
+  var modal = document.getElementById("successModal");
+  modal.style.display = "flex";
+  modal.classList.add("show");
+})
   .catch(() => {
     alert("❌ وقع مشكل");
   });
