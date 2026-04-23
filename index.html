@@ -619,8 +619,8 @@ function submitOrder(e) {
     body: formData
   })
   .then(() => {
-    alert("✅ تم إرسال الطلب");
-  })
+  document.getElementById("successModal").style.display = "flex";
+})
   .catch(() => {
     alert("❌ وقع مشكل");
   });
