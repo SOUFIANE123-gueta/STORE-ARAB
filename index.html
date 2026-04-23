@@ -642,13 +642,12 @@ function submitOrder(e) {
   formData.append("city", city);
   formData.append("product", currentOrderProduct.name);
   formData.append("price", currentOrderProduct.price);
-
+  document.getElementById("successModal").classList.add("show");
   fetch("https://script.google.com/macros/s/AKfycbwelT6tgL-85K01sktKYZ5NzxEU4bOJk4gW_nrotcARCkBZ5JEfCrViBNxY0wXr3vxPDw/exec", {
     method: "POST",
     body: formData
   })
   .then(() => {
-  document.getElementById("successModal").classList.add("show");
   document.getElementById("orderForm").style.display = "none";
 })
   .catch(() => {
