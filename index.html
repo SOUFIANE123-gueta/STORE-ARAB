@@ -663,7 +663,6 @@ function showSuccess() {
     document.getElementById('orderNum').textContent = '#' + num;
 
     document.getElementById('successModal').classList.add('active');
-    document.body.style.overflow = 'hidden';
 
     // Update cart badge
     var badge = document.getElementById('cartBadge');
@@ -671,8 +670,12 @@ function showSuccess() {
 }
 
 function closeSuccessModal() {
-  document.getElementById("successModal").classList.remove("show");
-  document.getElementById("orderForm").style.display = "block";
+  var modal = document.getElementById("successModal");
+
+  modal.classList.remove("show");
+  modal.style.display = "none";
+      document.body.style.overflow = "";
+    document.getElementById("orderForm").reset();
 }
 // Cart (visual only)
 function openCart() {
