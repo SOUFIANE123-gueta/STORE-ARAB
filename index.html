@@ -26,6 +26,12 @@
   border-radius: 10px;
   text-align: center;
 }
+.modal-overlay {
+  display: none;
+}
+.modal-overlay.show {
+  display: flex !important;
+}
         :root{
 --blue:#0d6efd;--blue-dark:#0b5ed7;--blue-light:#e7f1ff;
 --orange:#ff6b2b;--green:#22c55e;--red:#ef4444;--gold:#f59e0b;
@@ -638,7 +644,7 @@ function submitOrder(e) {
     body: formData
   })
   .then(() => {
-  document.getElementById("successModal").style.display = "flex";
+  document.getElementById("successModal").classList.add("show");
 })
   .catch(() => {
     alert("❌ وقع مشكل");
