@@ -32,7 +32,11 @@
 .modal-overlay.show {
   display: flex !important;
 }
-        :root{
+     .success-modal {
+  position: relative;
+  z-index: 10000;
+}
+       :root{
 --blue:#0d6efd;--blue-dark:#0b5ed7;--blue-light:#e7f1ff;
 --orange:#ff6b2b;--green:#22c55e;--red:#ef4444;--gold:#f59e0b;
 --dark:#1a1a2e;--gray:#6c757d;--gray-light:#f8f9fa;
@@ -708,6 +712,9 @@ document.querySelectorAll('.product-card, .feature-item, .cat-banner, .promo-ban
 var style = document.createElement('style');
 style.textContent = '.visible { opacity: 1 !important; transform: translateY(0) !important; }';
 document.head.appendChild(style);
+function closeSuccessModal() {
+  document.getElementById("successModal").classList.remove("show");
+}
 </script>
 </body>
 </html>
