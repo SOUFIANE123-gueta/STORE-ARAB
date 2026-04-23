@@ -670,10 +670,9 @@ function showSuccess() {
 }
 
 function closeSuccessModal() {
-    document.getElementById('successModal').classList.remove('active');
-    document.body.style.overflow = '';
+  document.getElementById("successModal").classList.remove("show");
+  document.getElementById("orderForm").style.display = "block";
 }
-
 // Cart (visual only)
 function openCart() {
     alert('🛒 سلة المشتريات: ' + document.getElementById('cartBadge').textContent + ' منتج');
