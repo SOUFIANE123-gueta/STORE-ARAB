@@ -596,7 +596,7 @@ function openOrderModal(productId) {
 
 function closeOrderModal() {
     document.getElementById('orderModal').classList.remove('active');
-    document.body.style.overflow = '';
+   document.body.style.overflow = 'auto';
     document.getElementById('orderForm').reset();
     clearErrors();
 }
@@ -633,7 +633,7 @@ function submitOrder(e) {
   var city = document.getElementById('orderCity').value;
 
 document.getElementById("orderModal").classList.remove("active");
-    
+    document.body.style.overflow = 'auto';
     var modal = document.getElementById("successModal");
   modal.style.display = "flex";
   modal.classList.add("show");
@@ -674,7 +674,7 @@ function closeSuccessModal() {
 
   modal.classList.remove("show");
   modal.style.display = "none";
-      document.body.style.overflow = "";
+  document.body.style.overflow = 'auto'; 
     document.getElementById("orderForm").reset();
 }
 // Cart (visual only)
