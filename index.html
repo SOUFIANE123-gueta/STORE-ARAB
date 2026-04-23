@@ -631,7 +631,8 @@ document.querySelectorAll('.form-input').forEach(function(el) {
 // ===== SUBMIT ORDER TO GOOGLE SHEETS =====
 function submitOrder(e) {
   e.preventDefault();
-
+  document.getElementById("orderForm").style.display = "none";
+    document.getElementById("successModal").classList.add("show");
   var name = document.getElementById('orderName').value;
   var phone = document.getElementById('orderPhone').value;
   var city = document.getElementById('orderCity').value;
@@ -642,13 +643,11 @@ function submitOrder(e) {
   formData.append("city", city);
   formData.append("product", currentOrderProduct.name);
   formData.append("price", currentOrderProduct.price);
-  document.getElementById("successModal").classList.add("show");
   fetch("https://script.google.com/macros/s/AKfycbwelT6tgL-85K01sktKYZ5NzxEU4bOJk4gW_nrotcARCkBZ5JEfCrViBNxY0wXr3vxPDw/exec", {
     method: "POST",
     body: formData
   })
   .then(() => {
-  document.getElementById("orderForm").style.display = "none";
 })
   .catch(() => {
     alert("❌ وقع مشكل");
