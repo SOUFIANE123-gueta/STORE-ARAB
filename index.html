@@ -20,7 +20,7 @@
   z-index: 9999;
 }
 #successModal.show {
-  display: flex; /* كيظهر */
+  display: flex;
 }
 .success-modal {
   background: white;
@@ -643,9 +643,9 @@ function submitOrder(e) {
     body: formData
   })
   .then(() => {
-    document.getElementById("orderForm").style.display = "none";
-    document.getElementById("successModal").classList.add("show");
-  })
+   var modal = document.getElementById("successModal");
+modal.style.display = "flex";
+modal.classList.add("show");
   .catch(() => {
     alert("❌ وقع مشكل");
   });
@@ -708,8 +708,14 @@ var style = document.createElement('style');
 style.textContent = '.visible { opacity: 1 !important; transform: translateY(0) !important; }';
 document.head.appendChild(style);
 function closeSuccessModal() {
-  document.getElementById("successModal").classList.remove("show");
-}
+    var modal = document.getElementById("successModal");
+
+    modal.classList.remove("show");
+    modal.style.display = "none";
+
+    document.getElementById("orderForm").style.display = "block";
+    document.getElementById("orderForm").reset();
+  }
 </script>
 </body>
 </html>
