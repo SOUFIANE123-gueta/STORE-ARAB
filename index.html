@@ -597,57 +597,29 @@ document.querySelectorAll('.form-input').forEach(function(el) {
 
 // ===== SUBMIT ORDER TO GOOGLE SHEETS =====
 function submitOrder(e) {
-    e.preventDefault();
-    var valid = true;
-    var name = document.getElementById('orderName');
-    var phone = document.getElementById('orderPhone');
-    var city = document.getElementById('orderCity');
+  e.preventDefault();
 
-    clearErrors();
+  var name = document.getElementById('orderName').value;
+  var phone = document.getElementById('orderPhone').value;
+  var city = document.getElementById('orderCity').value;
 
-    if(!name.value.trim() || name.value.trim().length < 2) {
-        name.classList.add('error');
-        document.getElementById('nameError').classList.add('show');
-        valid = false;
-    }
-    if(!phone.value.trim() || phone.value.length !== 10) {
-        phone.classList.add('error');
-        document.getElementById('phoneError').classList.add('show');
-        valid = false;
-    }
-    if(!city.value.trim() || city.value.trim().length < 2) {
-        city.classList.add('error');
-        document.getElementById('cityError').classList.add('show');
-        valid = false;
-    }
+  var formData = new FormData();
+  formData.append("name", name);
+  formData.append("phone", phone);
+  formData.append("city", city);
+  formData.append("product", currentOrderProduct.name);
+  formData.append("price", currentOrderProduct.price);
 
-    if(!valid) {
-        if(name.classList.contains('error')) name.scrollIntoView({behavior:'smooth',block:'center'});
-        else if(phone.classList.contains('error')) phone.scrollIntoView({behavior:'smooth',block:'center'});
-        else city.scrollIntoView({behavior:'smooth',block:'center'});
-        return;
-    }
-
-    var btn = document.getElementById('submitBtn');
-    btn.classList.add('loading');
-    btn.disabled = true;
-
-    var formData = new FormData();
-    formData.append('name', name.value.trim());
-    formData.append('phone', phone.value.trim());
-    formData.append('city', city.value.trim());
-    formData.append('product', currentOrderProduct.name);
-    formData.append('price', currentOrderProduct.price + ' MAD');
-    formData.append('timestamp', new Date().toLocaleString('ar-MA'));
-
-    fetch('https://script.google.com/macros/s/AKfycbx3X1COsOG3jVoNWWaIpHh_dCVcP-cUwZO18BhiuXAvsbX_u_zx84ytp_TF3QY7iGaWGA/exec', {
-        method: 'POST',
-        body: formData
-    }).then(function() {
-        showSuccess();
-    }).catch(function() {
-        showSuccess();
-    });
+  fetch("https://script.google.com/macros/s/AKfycbx3X1COsOG3jVoNWWaIpHh_dCVcP-cUwZ018BhiuXAvsbX_u_zx84ytp_TF3QY7iGaWGA/exec", {
+    method: "POST",
+    body: formData
+  })
+  .then(() => {
+    alert("✅ تم إرسال الطلب");
+  })
+  .catch(() => {
+    alert("❌ وقع مشكل");
+  });
 }
 
 function showSuccess() {
