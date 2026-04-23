@@ -610,7 +610,7 @@ function submitOrder(e) {
   formData.append("product", currentOrderProduct.name);
   formData.append("price", currentOrderProduct.price);
 
-  fetch("https://script.google.com/macros/s/AKfycbx3X1COsOG3jVoNWWaIpHh_dCVcP-cUwZ018BhiuXAvsbX_u_zx84ytp_TF3QY7iGaWGA/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbwvpmEqsr6qBwZmrFGk6z4IM_iPZJdGc6Px9lOxX2XR8FmjbUWy6h7uWNADa_Ve7wTB/exec", {
     method: "POST",
     body: formData
   })
