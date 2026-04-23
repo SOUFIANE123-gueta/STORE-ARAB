@@ -627,8 +627,7 @@ document.querySelectorAll('.form-input').forEach(function(el) {
 // ===== SUBMIT ORDER TO GOOGLE SHEETS =====
 function submitOrder(e) {
   e.preventDefault();
-  document.getElementById("orderForm").style.display = "none";
-    document.getElementById("successModal").classList.add("show");
+
   var name = document.getElementById('orderName').value;
   var phone = document.getElementById('orderPhone').value;
   var city = document.getElementById('orderCity').value;
@@ -644,7 +643,9 @@ function submitOrder(e) {
     body: formData
   })
   .then(() => {
-})
+    document.getElementById("orderForm").style.display = "none";
+    document.getElementById("successModal").classList.add("show");
+  })
   .catch(() => {
     alert("❌ وقع مشكل");
   });
