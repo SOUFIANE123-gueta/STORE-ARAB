@@ -632,6 +632,12 @@ function submitOrder(e) {
   var phone = document.getElementById('orderPhone').value;
   var city = document.getElementById('orderCity').value;
 
+document.getElementById("orderModal").classList.remove("active");
+    
+    var modal = document.getElementById("successModal");
+  modal.style.display = "flex";
+  modal.classList.add("show");
+    
   var formData = new FormData();
   formData.append("name", name);
   formData.append("phone", phone);
@@ -642,11 +648,6 @@ function submitOrder(e) {
     method: "POST",
     body: formData
   })
-.then(() => {
-  var modal = document.getElementById("successModal");
-  modal.style.display = "flex";
-  modal.classList.add("show");
-})
   .catch(() => {
     alert("❌ وقع مشكل");
   });
