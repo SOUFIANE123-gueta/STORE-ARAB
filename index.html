@@ -645,6 +645,7 @@ function submitOrder(e) {
   })
   .then(() => {
   document.getElementById("successModal").classList.add("show");
+  document.getElementById("orderForm").style.display = "none";
 })
   .catch(() => {
     alert("❌ وقع مشكل");
